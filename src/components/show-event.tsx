@@ -10,7 +10,8 @@ export const ShowEvent: React.FC = () => {
 
   useEffect(() => {
     const fetchEvent = async () => {
-      const response = await fetch(`http://127.0.0.1:8080/api/v1/events/${eventId}`);
+      const baseUrl = import.meta.env.VITE_BACKEND_URL;
+      const response = await fetch(baseUrl+`/v1/events/${eventId}`);
       const json: HttpResponse<{ event: Event }> = await response.json();
       if (json.code === 200) {
         setEvent(json.data.event);

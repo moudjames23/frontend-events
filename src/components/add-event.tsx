@@ -42,7 +42,8 @@ export const AddEvent = () => {
 
     // API call here
     try {
-      const response = await fetch('http://127.0.0.1:8080/api/v1/events', {
+      const baseUrl = import.meta.env.VITE_BACKEND_URL;
+      const response = await fetch(baseUrl+'/v1/events', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
